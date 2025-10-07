@@ -1,3 +1,6 @@
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+
+
 async function fetchJson(url) {
     const response = await fetch(url)
     const object = await response.json()
@@ -17,7 +20,7 @@ async function getChefBirthday(id) {
 ( async() => {
     try{
         const ricetta = await getChefBirthday(1)
-        console.log('Data di nascita dello chef:', ricetta.user.birthDate)
+        console.log('Data di nascita dello chef:', dayjs(ricetta.user.birthDate).format("DD/MM/YY"))
 
     } catch(error){
         console.error(error)
